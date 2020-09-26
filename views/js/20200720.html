@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何发布一个npm包 | xuks</title>
+    <meta name="description" content="better late than never">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.aa8eed3e.css" as="style"><link rel="preload" href="/assets/js/app.25bd69c4.js" as="script"><link rel="preload" href="/assets/js/4.6e0585f6.js" as="script"><link rel="preload" href="/assets/js/1.de0b2451.js" as="script"><link rel="preload" href="/assets/js/17.378ae7bb.js" as="script"><link rel="prefetch" href="/assets/js/10.d79d4537.js"><link rel="prefetch" href="/assets/js/11.ce91667a.js"><link rel="prefetch" href="/assets/js/12.92dce66d.js"><link rel="prefetch" href="/assets/js/13.fc50a8ba.js"><link rel="prefetch" href="/assets/js/14.68e950fd.js"><link rel="prefetch" href="/assets/js/15.d1196c16.js"><link rel="prefetch" href="/assets/js/16.acb599d0.js"><link rel="prefetch" href="/assets/js/18.d3bd3afa.js"><link rel="prefetch" href="/assets/js/19.dbc911d5.js"><link rel="prefetch" href="/assets/js/20.822e2610.js"><link rel="prefetch" href="/assets/js/21.cefc375b.js"><link rel="prefetch" href="/assets/js/5.c5d97cf4.js"><link rel="prefetch" href="/assets/js/6.539055ff.js"><link rel="prefetch" href="/assets/js/7.2f9bbe21.js"><link rel="prefetch" href="/assets/js/8.501095af.js"><link rel="prefetch" href="/assets/js/9.09d29e4c.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.d17d02f4.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.aa8eed3e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container"><div><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.png" alt="xuks" class="logo"> <span class="site-name">xuks</span></a> <div class="links"><div class="color-picker"><a href="#" class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="theme-options"><!----> <div class="dark-theme-options toggle-option"><label for="dark-theme-toggle">Enable Dark Theme?</label> <input id="dark-theme-toggle" type="checkbox" checked="checked"></div></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/html.html" class="nav-link"><i class="iconfont undefined"></i>
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/category/css.html" class="nav-link"><i class="iconfont undefined"></i>
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/category/js.html" class="nav-link"><i class="iconfont undefined"></i>
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/category/webpack.html" class="nav-link"><i class="iconfont undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/category/Other.html" class="nav-link"><i class="iconfont undefined"></i>
+  Other
+</a></li><li class="dropdown-item"><!----> <a href="/category/vue.html" class="nav-link"><i class="iconfont undefined"></i>
+  vue
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.im/user/2189882894324135" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/xukaishan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/u/a6ccd6700041" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-jianshu"></i>
+  简书
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43594899" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-csdn"></i>
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://home.cnblogs.com/u/1522663/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-bokeyuan"></i>
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/html.html" class="nav-link"><i class="iconfont undefined"></i>
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/category/css.html" class="nav-link"><i class="iconfont undefined"></i>
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/category/js.html" class="nav-link"><i class="iconfont undefined"></i>
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/category/webpack.html" class="nav-link"><i class="iconfont undefined"></i>
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/category/Other.html" class="nav-link"><i class="iconfont undefined"></i>
+  Other
+</a></li><li class="dropdown-item"><!----> <a href="/category/vue.html" class="nav-link"><i class="iconfont undefined"></i>
+  vue
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://juejin.im/user/2189882894324135" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/xukaishan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/u/a6ccd6700041" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-jianshu"></i>
+  简书
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43594899" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-csdn"></i>
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://home.cnblogs.com/u/1522663/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-bokeyuan"></i>
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>如何发布一个npm包</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/views/js/20200720.html#前言" class="sidebar-link">前言</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/js/20200720.html#主要步骤" class="sidebar-link">主要步骤</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/js/20200720.html#常见问题" class="sidebar-link">常见问题</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div><main class="page reco-hide"> <div class="page-title"><h1>如何发布一个npm包</h1> <hr> <div data-v-0b496ca7><i class="iconfont reco-account" data-v-0b496ca7><span data-v-0b496ca7>xuks</span></i> <i class="iconfont reco-date" data-v-0b496ca7><span data-v-0b496ca7>2020-7-20</span></i> <!----> <i class="iconfont reco-tag tags" data-v-0b496ca7><span class="tag-item" data-v-0b496ca7>
+      npm
+    </span><span class="tag-item" data-v-0b496ca7>
+      插件开发
+    </span></i></div></div> <div class="content__default"><h2 id="前言"><a href="#前言" aria-hidden="true" class="header-anchor">#</a> 前言</h2> <p>作为一个前端工程师，npm-包管理器我们都比较熟悉，也经常使用，今天我为大家简单介绍一下如何发布一个属于自己的npm包</p> <p><a href="https://github.com/xukaishan/yxp_calendar" target="_blank" rel="noopener noreferrer">示例代码插件yxp_calendar<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="主要步骤"><a href="#主要步骤" aria-hidden="true" class="header-anchor">#</a> 主要步骤</h2> <ol><li><a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">创建一个自己的npm账号 npm官网<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ol> <p>2.创建一个自己的项目</p> <ul><li>创建一个项目文件夹yxp_calendar(这里以发布一款日历插件为例)</li> <li>cd yxp_calendar</li> <li>npm init 具体初始化init配置根据项目自行配置</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>$ npm init
+This utility will walk you through creating a <span class="token keyword">package</span><span class="token punctuation">.</span>json file<span class="token punctuation">.</span>
+It only covers the most common items<span class="token punctuation">,</span> and tries to guess sensible defaults<span class="token punctuation">.</span>
+
+See <span class="token template-string"><span class="token string">`npm help json`</span></span> <span class="token keyword">for</span> definitive documentation on these fields
+and exactly what they <span class="token keyword">do</span><span class="token punctuation">.</span>
+
+Use <span class="token template-string"><span class="token string">`npm install &lt;pkg&gt;`</span></span> afterwards to install a <span class="token keyword">package</span> and
+save it <span class="token keyword">as</span> a dependency <span class="token keyword">in</span> the <span class="token keyword">package</span><span class="token punctuation">.</span>json file<span class="token punctuation">.</span>
+
+Press <span class="token operator">^</span><span class="token constant">C</span> at any time to quit<span class="token punctuation">.</span>
+<span class="token keyword">package</span> name<span class="token punctuation">:</span> <span class="token punctuation">(</span>my<span class="token operator">-</span>project<span class="token punctuation">)</span>
+version<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token number">1.0</span><span class="token number">.0</span><span class="token punctuation">)</span>
+description<span class="token punctuation">:</span>
+entry point<span class="token punctuation">:</span> <span class="token punctuation">(</span>index<span class="token punctuation">.</span>js<span class="token punctuation">)</span>
+test command<span class="token punctuation">:</span>
+git repository<span class="token punctuation">:</span>
+keywords<span class="token punctuation">:</span>
+author<span class="token punctuation">:</span>
+license<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">ISC</span><span class="token punctuation">)</span>
+About to write to <span class="token constant">C</span><span class="token punctuation">:</span>\Users\<span class="token constant">ASUS</span>\Desktop\test\my<span class="token operator">-</span>project\<span class="token keyword">package</span><span class="token punctuation">.</span>json<span class="token punctuation">:</span>
+
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;yxp_calendar&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;version&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;1.0.0&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;description&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;main&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;index.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;scripts&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;test&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;author&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;license&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;ISC&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><p>修改package.json</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">// package.json</span>
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;yxp_calendar&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;version&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;1.1.0&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;description&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;yxp_calendar plugin&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;main&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;lib/yxp_calendar.min.js&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 插件被引入的入口文件 使用者import时的文件</span>
+  ···
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>根据项目搭建自己的目录结构，这里举例为：</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>yxp_calendar <span class="token comment">// 项目文件名</span>
+<span class="token operator">|</span><span class="token operator">-</span> <span class="token operator">/</span>node_modules <span class="token comment">// 依赖包</span>
+<span class="token operator">|</span><span class="token operator">-</span> lib <span class="token comment">// 插件打包后存放文件夹</span>
+  <span class="token operator">|</span><span class="token operator">-</span> yxp_calendar<span class="token punctuation">.</span>min<span class="token punctuation">.</span>js <span class="token comment">// 打包后插件文件</span>
+<span class="token operator">|</span><span class="token operator">-</span> src 
+  <span class="token operator">|</span><span class="token operator">-</span> calendar <span class="token comment">// 插件实现代码</span>
+    <span class="token operator">|</span><span class="token operator">-</span> calendar<span class="token punctuation">.</span>js
+    <span class="token operator">|</span><span class="token operator">-</span> calendar<span class="token punctuation">.</span>css
+  <span class="token operator">|</span><span class="token operator">-</span> index<span class="token punctuation">.</span>js <span class="token comment">// 入口文件</span>
+<span class="token operator">|</span><span class="token operator">-</span> <span class="token punctuation">.</span>npmignore
+<span class="token operator">|</span><span class="token operator">-</span> <span class="token keyword">package</span><span class="token punctuation">.</span>json
+<span class="token operator">|</span><span class="token operator">-</span> <span class="token keyword">package</span><span class="token operator">-</span>lock<span class="token punctuation">.</span>json
+<span class="token operator">|</span><span class="token operator">-</span> <span class="token constant">README</span><span class="token punctuation">.</span>md
+<span class="token operator">|</span><span class="token operator">-</span> webpack<span class="token punctuation">.</span>config<span class="token punctuation">.</span>js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>创建 .npmignore 添加发布时忽略文件及目录</p> <p>根据需要安装相应依赖 如babel及需要的loader等，以及我们打包使用的webpack</p> <p>webpack 打包配置示例：</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">// webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    entry<span class="token punctuation">:</span> <span class="token string">&quot;./src/index.js&quot;</span><span class="token punctuation">,</span><span class="token comment">//入口文件，就是上步骤的src目录下的index.js文件，</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./lib'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment">//输出路径，就是上步骤中新建的dist目录，</span>
+        publicPath<span class="token punctuation">:</span> <span class="token string">'/lib/'</span><span class="token punctuation">,</span>
+        filename<span class="token punctuation">:</span> <span class="token string">'yxp_calendar.min.js'</span><span class="token punctuation">,</span> <span class="token comment">// 打包文件名</span>
+        libraryTarget<span class="token punctuation">:</span> <span class="token string">'umd'</span><span class="token punctuation">,</span> <span class="token comment">// 这里一般填写umd 支持多种规范引入使用插件</span>
+        umdNamedDefine<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    ···
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ol start="3"><li><p>构建自己的项目执行package脚本build我们的项目， 如果不需要打包可忽略此步骤（build后输出文件就是上述打包的xxx.min.js）</p></li> <li><p>npm进行登录 执行npm login 输入用户名及密码邮箱等 输入密码时默认为hidden</p></li></ol> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token constant">PS</span> <span class="token constant">F</span><span class="token punctuation">:</span>\myDemo\res\npm\yxp_calendar<span class="token operator">&gt;</span> npm login
+Username<span class="token punctuation">:</span> littlekai
+Password<span class="token punctuation">:</span>
+Email<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token constant">IS</span> <span class="token keyword">public</span><span class="token punctuation">)</span> yoursEmail@qq<span class="token punctuation">.</span>com
+Logged <span class="token keyword">in</span> <span class="token keyword">as</span> littlekai on https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/registry.npmjs.org/</span><span class="token punctuation">.</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ol start="5"><li>npm 发布 执行npm publish</li></ol> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token constant">PS</span> <span class="token constant">F</span><span class="token punctuation">:</span>\myDemo\res\npm\yxp_calendar<span class="token operator">&gt;</span> npm publish
+npm notice
+npm notice <span class="token keyword">package</span><span class="token punctuation">:</span> yxp_calendar@<span class="token number">1.1</span><span class="token number">.0</span>
+npm notice <span class="token operator">===</span> Tarball Contents <span class="token operator">===</span>
+npm notice <span class="token number">774</span>B   <span class="token keyword">package</span><span class="token punctuation">.</span>json
+npm notice <span class="token number">1.5</span>kB  <span class="token constant">README</span><span class="token punctuation">.</span>md
+npm notice <span class="token number">1.2</span>kB  webpack<span class="token punctuation">.</span>config<span class="token punctuation">.</span>js
+npm notice <span class="token number">41.2</span>kB lib<span class="token operator">/</span>yxp_calendar<span class="token punctuation">.</span>min<span class="token punctuation">.</span>js
+npm notice <span class="token operator">===</span> Tarball Details <span class="token operator">===</span>
+npm notice name<span class="token punctuation">:</span>          yxp_calendar
+npm notice version<span class="token punctuation">:</span>       <span class="token number">1.1</span><span class="token number">.0</span>
+npm notice <span class="token keyword">package</span> size<span class="token punctuation">:</span>  <span class="token number">13.9</span> kB
+npm notice unpacked size<span class="token punctuation">:</span> <span class="token number">44.7</span> kB
+npm notice shasum<span class="token punctuation">:</span>        <span class="token number">807e2</span>bb65daac4c93ad17026143ec359d6accde3
+npm notice integrity<span class="token punctuation">:</span>     sha512<span class="token operator">-</span>VQOIfcnpxLHJU<span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span>IbNBDMrZx<span class="token operator">/</span>jnA<span class="token operator">==</span>
+npm notice total files<span class="token punctuation">:</span>   <span class="token number">4</span>
+npm notice
+<span class="token operator">+</span> yxp_calendar@<span class="token number">1.1</span><span class="token number">.0</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ol start="6"><li>若需要删除包：npm unpublish yxp_calendar@1.0.0 删除某个版本 或 npm unpublish --force 删除整个npm的包 删除后，24h内不允许发布重名包文件</li></ol> <h2 id="常见问题"><a href="#常见问题" aria-hidden="true" class="header-anchor">#</a> 常见问题</h2> <ul><li>执行npm publish 报错</li></ul> <p>可能npm登录失效 重新npm login 登录一下</p> <p>package.json 中包名冲突已经被发布使用 或者此次发布的版本号未更新</p> <p>&quot;name&quot;: &quot;yxp_calendar&quot;,
+&quot;version&quot;: &quot;1.1.0&quot;,</p></div> <!----> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">7/21/2020, 12:51:26 AM</span></div></footer> <!----> </main> <div class="valine-wrapper" data-v-0162251c><div id="valine" data-v-0162251c></div></div></div> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-d0bfeaa4 data-v-d0bfeaa4><i class="iconfont reco-up" data-v-d0bfeaa4></i></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.25bd69c4.js" defer></script><script src="/assets/js/4.6e0585f6.js" defer></script><script src="/assets/js/1.de0b2451.js" defer></script><script src="/assets/js/17.378ae7bb.js" defer></script>
+  </body>
+</html>
